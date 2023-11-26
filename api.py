@@ -27,3 +27,12 @@ def index(start: str, end: str):
     s = q.reset_index().to_json(orient='records')
     obj = json.loads(s)
     return obj
+
+
+@app.get("/stats")
+def stats(start: str, end: str):
+    q = data[(data["datetime"] >= start) & (data["datetime"] <= end)]
+    st = q.describe()[["open", "high", "low", "close", "volume"]]
+    s = st.reset_index().to_json(orient='records')
+    obj = json.loads(s)
+    return obj
