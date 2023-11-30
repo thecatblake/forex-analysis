@@ -7,11 +7,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useEffect, useState} from "react";
 
-export function Stat({start, end}) {
+export function Stat({currency, start, end}) {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:8000/stats?start=${start}&end=${end}`)
+        fetch(`http://localhost:8000/${currency}/stats?start=${start}&end=${end}`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [start, end])

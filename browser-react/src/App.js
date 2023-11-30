@@ -4,6 +4,9 @@ import {Chart} from "./Chart";
 import {useEffect, useState} from "react";
 import moment from "moment";
 import {Stat} from "./Stat";
+import {ThemeProvider} from "@mui/material";
+import {theme} from "./theme";
+
 
 function App() {
     const [startDate, setStartDate] = useState("2021-01-01")
@@ -21,16 +24,22 @@ function App() {
         return () => clearInterval(interval)
     }, [started])
   return (
-    <div className="App bg-black">
-        <label htmlFor="start_date" className="text-color">Start date</label>
-        <input type="date" id="start_date" name="start-date" onChange={(e) => setStartDate(e.target.value)} value={startDate} min="2008-01-01" max="2023-01-01"/>
-        <label htmlFor="end_date" className="text-color">End date</label>
-        <input type="date" id="end_date" name="end-date" onChange={(e) => setEndDate(e.target.value)} value={endDate} min="2008-01-01" max="2023-01-01"/>
-        <button onClick={() => setStarted(true)}>start</button>
-        <button onClick={() => setStarted(false)}>Stop</button>
-        <Chart start={startDate} end={endDate}/>
-        <Stat start={startDate} end={endDate}/>
-    </div>
+      <ThemeProvider theme={theme} >
+          <div className="App bg-black">
+              <label htmlFor="start_date" className="text-color">Start date</label>
+              <input type="date" id="start_date" name="start-date" onChange={(e) => setStartDate(e.target.value)} value={startDate} min="2008-01-01" max="2023-01-01"/>
+              <label htmlFor="end_date" className="text-color">End date</label>
+              <input type="date" id="end_date" name="end-date" onChange={(e) => setEndDate(e.target.value)} value={endDate} min="2008-01-01" max="2023-01-01"/>
+              <button onClick={() => setStarted(true)}>start</button>
+              <button onClick={() => setStarted(false)}>Stop</button>
+              <div className="grid">
+                  <Chart initialCurrency={"USDJPY"} start={startDate} end={endDate}/>
+                  <Chart initialCurrency={"EURUSD"} start={startDate} end={endDate}/>
+                  <Chart initialCurrency={"GBPUSD"} start={startDate} end={endDate}/>
+                  <Chart initialCurrency={"USDCAD"} start={startDate} end={endDate}/>
+              </div>
+          </div>
+      </ThemeProvider>
   );
 }
 

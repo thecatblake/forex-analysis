@@ -6,7 +6,15 @@ import matplotlib.animation as animation
 
 EPOCHS = 10000
 
-data = pd.read_table("./data/EURUSD1440.csv", names=["date", "time", "open", "high", "low", "close", "volume"])
+data = {
+    "EURUSD": "./data/EURUSD_D1.csv",
+    "USDJPY": "./data/USDJPY_D1.csv",
+    "GBPUSD": "./data/GBPUSD_D1.csv",
+    "USDCAD": "./data/USDCAD_D1.csv",
+    "USDCHF": "./data/USDCHF_D1.csv",
+}
+
+data = {k: pd.read_table(v, names=["date", "time", "open", "high", "low", "close", "volume"]) for k,v in data}
 
 num = data.shape[0]
 

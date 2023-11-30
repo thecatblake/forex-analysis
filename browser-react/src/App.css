@@ -14,7 +14,7 @@
   color: #ABB7C4;
 }
 
-#candlestick {
+.candlestick {
   display: flex;
   align-items: end;
 }
@@ -27,11 +27,24 @@
   width: 100%;
 }
 
-#volume_chart {
+.volume_chart {
   display: flex;
   align-items: end;
 }
 
 .volume_chart_bar {
   width: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "chart chart"
+    "chart chart";
+  grid-template-columns: 50% 50%;
+}
+
+.chart {
+  width: 100%;
+  border: #ABB7C4 1px solid;
 }
