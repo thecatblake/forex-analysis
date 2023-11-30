@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import {Chart} from "./Chart";
+import {HistoricalChart} from "./HistoricalChart";
 import {useEffect, useState} from "react";
 import moment from "moment";
 import {Stat} from "./Stat";
 import {ThemeProvider} from "@mui/material";
 import {theme} from "./theme";
+import {RealTimeChart} from "./RealTimeChart";
 
 
 function App() {
@@ -33,10 +34,10 @@ function App() {
               <button onClick={() => setStarted(true)}>start</button>
               <button onClick={() => setStarted(false)}>Stop</button>
               <div className="grid">
-                  <Chart initialCurrency={"USDJPY"} start={startDate} end={endDate}/>
-                  <Chart initialCurrency={"EURUSD"} start={startDate} end={endDate}/>
-                  <Chart initialCurrency={"GBPUSD"} start={startDate} end={endDate}/>
-                  <Chart initialCurrency={"USDCAD"} start={startDate} end={endDate}/>
+                  <RealTimeChart initialCurrency={"USDJPY"} />
+                  <RealTimeChart initialCurrency={"EURUSD"} />
+                  <RealTimeChart initialCurrency={"GBPUSD"} />
+                  <RealTimeChart initialCurrency={"USDCAD"} />
               </div>
           </div>
       </ThemeProvider>
