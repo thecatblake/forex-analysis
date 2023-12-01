@@ -48,7 +48,7 @@ export function RealTimeChart({initialCurrency}) {
                 let d = yaticker.decode(buf)
 
                 let newData = {
-                    date: new Date(d.time),
+                    date: (new Date(d.time)),
                     open: d.price,
                     high: d.price,
                     low: d.price,
