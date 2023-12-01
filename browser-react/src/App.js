@@ -7,6 +7,7 @@ import {Stat} from "./Stat";
 import {ThemeProvider} from "@mui/material";
 import {theme} from "./theme";
 import {RealTimeChart} from "./RealTimeChart";
+import {News} from "./News";
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
                   <RealTimeChart initialCurrency={"GBPUSD"} />
                   <RealTimeChart initialCurrency={"USDCAD"} />
               </div>
+              <News style={{paddingTop: "100px"}} />
+
           </div>
       </ThemeProvider>
   );

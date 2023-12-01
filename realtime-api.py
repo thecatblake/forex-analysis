@@ -90,7 +90,7 @@ def index(currency_pair: CurrencyPairs, t: str):
         "high": q["price"]["max"],
         "low": q["price"]["min"],
         "close": q["price"]["last"]
-    }).reset_index().drop("index")
+    }).reset_index()
     s = q.reset_index().to_json(orient='records')
     obj = json.loads(s)
     return obj

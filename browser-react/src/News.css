@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+time {
+    font: 700 1.5rem "Oswald", sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+
+    border-top: 3px solid #333333;
+    border-bottom: 3px solid #333333;
+    padding: 12px 0;
+    display: block;
+}
+
+time sup {
+    font-size: .875rem;
+    font-weight: normal;
+}
+
+.news-header {
+    font-weight: 700;
+    font-size: 4rem;
+    font-family: "Oswald", sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.news {
+    background-color: #f9f7f1;
+    font-family: "PT Serif", serif;
+    color: #404040;
+    padding: 0 24px;
+}
+
+.news-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
+    text-align: start;
+}
+
+.news-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #404040;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}

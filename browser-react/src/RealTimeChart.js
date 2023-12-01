@@ -3,6 +3,7 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {ChartView} from "./ChartView";
 import useWebSocket, {ReadyState} from "react-use-websocket";
 import {yaticker} from "./PricingData";
+import moment from 'moment';
 
 function checkIfSameMinute(d1, d2) {
     return d1.getDay() === d2.getDay() &&
@@ -31,6 +32,25 @@ export function RealTimeChart({initialCurrency}) {
     }
 
     const {sendJsonMessage, readyState, getWebSocket} = useWebSocket("wss://streamer.finance.yahoo.com")
+
+    useEffect(() => {
+        let url = encodeURI(`http://localhost:8000/${currency}?t=${moment().format("YYYY-MM-DD HH:mm")}:00`)
+        fetch(url)
+            .then(res => res.json())
+            .then(j => {
+                console.log(j)
+                setData(j.map(d => {
+                    return {
+                        date: new Date(d.datetime),
+                        open: d.open,
+                        high: d.high,
+                        low: d.low,
+                        close: d.close,
+                        volume: 0
+                    }
+                }))
+            })
+    }, [currency])
 
     useEffect(() => {
         if(readyState === ReadyState.OPEN) {
