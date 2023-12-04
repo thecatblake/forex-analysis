@@ -38,7 +38,7 @@ function App() {
                   <RealTimeChart initialCurrency={"USDJPY"} />
                   <RealTimeChart initialCurrency={"EURUSD"} />
                   <RealTimeChart initialCurrency={"GBPUSD"} />
-                  <RealTimeChart initialCurrency={"USDCAD"} />
+                  <RealTimeChart initialCurrency={"USDCHF"} />
               </div>
               <News style={{paddingTop: "100px"}} />
 

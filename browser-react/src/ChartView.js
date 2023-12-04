@@ -9,27 +9,45 @@ export function ChartView({data, showVolume=true}) {
 
     const candleScale = d3.scaleLinear()
         .domain([min_v, max_v])
-        .range([0, 300])
+        .range([10, 300])
 
     const volumeScale = d3.scaleLinear()
         .domain([0, vol_max])
         .range([0, 100])
+
     return <>
-        <div className="candlestick">
+        <div className="candlestick" style={{height: "300px"}}>
             {
                 data.map(d => <div className="candlestick_bar">
                     <div
-                        className={d["open"] <= d["close"] ? "candlestick_close" : "candlestick_open"}
                         style={{
-                            height: d["open"] <= d["close"] ? `${candleScale(d["close"])}px` : `${candleScale(d["open"])}px`,
-                            marginBottom: d["open"] <= d["close"] ? `-${candleScale(d["open"])}px` : `-${candleScale(d["close"])}px`,
-                            backgroundColor: d["open"] <= d["close"] ?  "rgb(0, 255, 0)" : "rgb(255, 0, 0)"
+                            height: `${candleScale(d["high"])}px`,
+                            width: "1px",
+                            margin: "0px auto",
+                            marginBottom: d["open"] <= d["close"] ? `${-candleScale(d["close"])}px` : `${-candleScale(d["open"])}px`,
+                            backgroundColor: "white"
                         }}
                     ></div>
                     <div
-                        className={`bg-black ${d["open"] <= d["close"] ? "candlestick_open" : "candlestick_close"}`}
+                        style={{
+                            height: `${Math.abs(candleScale(d["close"]) - candleScale(d["open"]))}px`,
+                            backgroundColor: d["open"] <= d["close"] ? "green" : "red"
+                        }}
+                    ></div>
+                    <div
+                        className={d["open"] <= d["close"] ? "candlestick_close" : "candlestick_open"}
                         style={{
                             height: d["open"] <= d["close"] ? `${candleScale(d["open"])}px` : `${candleScale(d["close"])}px`,
+                            width: "1px",
+                            margin: "0px auto",
+                            marginBottom: `${-candleScale(d["low"])}px`,
+                            backgroundColor: "white"
+                        }}
+                    ></div>
+                    <div
+                        className="bg-black"
+                        style={{
+                            height:  `${candleScale(d["low"])}px`,
                         }}
                     ></div>
                 </div>)

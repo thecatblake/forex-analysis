@@ -86,7 +86,7 @@ export function RealTimeChart({initialCurrency}) {
                                     date: e.date,
                                     open: e.open,
                                     high: Math.max(e.high, d.price),
-                                    low: Math.max(e.low, d.price),
+                                    low: Math.min(e.low, d.price),
                                     close: d.price,
                                     volume: d.vol24hr
                                 }

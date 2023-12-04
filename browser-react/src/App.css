@@ -17,10 +17,18 @@
 .candlestick {
   display: flex;
   align-items: end;
+  padding: 0 10px;
 }
 
 .candlestick_bar {
   width: 10px;
+  margin: 0 1px;
+  position: relative;
+}
+
+.candlestick-highlow {
+  background-color: white;
+  z-index: 10;
 }
 
 .candlestick_bar > div {
@@ -47,4 +55,14 @@
 .chart {
   width: 100%;
   border: #ABB7C4 1px solid;
+}
+
+@media (max-width: 855px) {
+  .grid {
+    display: grid;
+    grid-template-areas:
+      "chart"
+      "chart";
+    grid-template-columns: 100%;
+  }
 }

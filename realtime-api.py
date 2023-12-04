@@ -80,6 +80,7 @@ def start_websocket():
 @app.get("/{currency_pair}")
 def index(currency_pair: CurrencyPairs, t: str):
     data = pd.DataFrame(list(queue.queue))
+    print(data)
     data = data[data["datetime"] < t]
     data = data.set_index("datetime")
     agg = data.groupby(["currency", "datetime"]).agg(['first', 'min', 'max', 'last']).reset_index()
