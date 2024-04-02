@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Forex real time'),
+      home: const MyHomePage(title: 'ohlc chart'),
     );
   }
 }
@@ -70,8 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<List<OHLC>> fetch() async {
     DateTime now = DateTime.now();
     now = DateTime(now.year, now.month, now.day, now.hour, now.minute, 0);
-    DateFormat formatter = DateFormat('yyyy-MM-dd hh:mm:ss');
+    DateFormat formatter = DateFormat('yyyy-MM-ddThh:mm:ss');
     String formatted = formatter.format(now);
+    developer.log("http://localhost:8000/${currency}?t=${formatted}");
     final uri = Uri.parse(
         "http://localhost:8000/${currency}?t=${formatted}");
     final res = await http.get(uri);
